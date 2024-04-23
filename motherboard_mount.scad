@@ -1,3 +1,7 @@
-include <modules/mod_motherboard_mount.scad>
+include<modules/mod_motherboard_mount.scad>
 
-motherboard_mount();
+if (project == 0)
+    motherboard_mount();
+else
+    projection()
+	motherboard_mount();

@@ -56,3 +56,31 @@ module screw(size,length,head_size,head_depth)
 	cylinder(r=head_size/2,h=head_depth);
     }
 }
+
+module _mount_bracket()
+{
+    difference()
+    {
+	union()
+	{
+	    cylinder(r=motherboard_mount_display_mount_radius,h=motherboard_mount_display_mount_thickness);
+	    translate([-motherboard_mount_display_mount_radius,0, 0])
+		cube([motherboard_mount_display_mount_radius*2,motherboard_mount_display_mount_radius,motherboard_mount_display_mount_thickness]);
+	}
+	translate([-motherboard_mount_display_mount_radius-0.1,-motherboard_mount_display_mount_radius,motherboard_mount_display_mount_radius * 2 + motherboard_mount_display_mount_thickness/2])
+	    rotate([0,90,0]) cylinder(r=motherboard_mount_display_mount_radius * 2,h=0.2+motherboard_mount_display_mount_radius*2);
+    }
+}
+
+module mount_bracket()
+{
+    difference()
+    {
+	_mount_bracket();
+	translate([0,0,clearance+motherboard_mount_display_mount_thickness-motherboard_mount_screw_head_depth])
+	    screw(motherboard_mount_screw_size,
+		  motherboard_mount_display_mount_thickness,
+		  motherboard_mount_screw_head_size,
+		  motherboard_mount_screw_head_depth);
+    }
+}

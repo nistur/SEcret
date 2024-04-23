@@ -49,6 +49,20 @@ module dm_motherboard_mount_holes()
 	translate([0,-motherboard_mount_display_mount_offset, 0])
 	    cylinder(r=(motherboard_mount_screw_insert_size/2)+clearance, h=motherboard_mount_screw_insert_depth+(2*clearance));
     }
+    translate([+(display_mount_cutout_width/2)+(motherboard_mount_display_mount_radius+motherboard_mount_thickness),
+	       0,
+	       display_mount_thickness-(motherboard_mount_screw_insert_size)])
+    {
+	translate([0,motherboard_mount_display_mount_offset, 0])
+	    cylinder(r=(motherboard_mount_screw_insert_size/2)+clearance, h=motherboard_mount_screw_insert_depth+(2*clearance));
+	translate([0,-motherboard_mount_display_mount_offset, 0])
+	    cylinder(r=(motherboard_mount_screw_insert_size/2)+clearance, h=motherboard_mount_screw_insert_depth+(2*clearance));
+    }
+    
+    translate([0,
+	       (motherboard_mount_width/2) + tie_bracket_thickness + motherboard_mount_display_mount_radius,
+	       display_mount_thickness-(motherboard_mount_screw_insert_size)])
+	cylinder(r=(motherboard_mount_screw_insert_size/2)+clearance, h=motherboard_mount_screw_insert_depth+(2*clearance));
 }
 
 module dm_side_cutout()
@@ -79,6 +93,11 @@ module dm_base()
 	    
 	    translate([display_mount_lower_mount_xoffs,-display_mount_lower_mount_yoffs,0]) dm_lower_mount();
 	    translate([display_mount_lower_mount_xoffs-display_mount_lower_mount_xseparation,-display_mount_lower_mount_yoffs,0]) dm_lower_mount();
+	    
+	    translate([0,
+		       (motherboard_mount_width/2) + tie_bracket_thickness + motherboard_mount_display_mount_radius - motherboard_mount_vertical_offset,
+		       0])
+		cylinder(r=motherboard_mount_display_mount_radius, h=display_mount_thickness);
 	}
 	dm_side_cutout();
     }

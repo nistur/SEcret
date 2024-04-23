@@ -15,14 +15,11 @@ module mb_base()
     }
 }
 
-module _mb_display_mount()
+module mb_tie_mount()
 {
-    union()
-    {
-	cylinder(r=motherboard_mount_display_mount_radius,h=motherboard_mount_display_mount_thickness);
-	translate([-motherboard_mount_display_mount_radius,0, 0])
-	    cube([motherboard_mount_display_mount_radius*2,motherboard_mount_display_mount_radius,motherboard_mount_display_mount_thickness]);
-    }
+    translate([-motherboard_mount_width/2,((tie_bracket_height-motherboard_mount_height_offset)/2)-motherboard_mount_display_mount_radius,motherboard_mount_thickness + motherboard_mount_display_mount_radius])
+    rotate([-90,0,-90])
+	mount_bracket();
 }
 
 module mb_display_mount()
@@ -31,15 +28,7 @@ module mb_display_mount()
 	       -(motherboard_mount_height+motherboard_mount_height_offset)/2,
 	       motherboard_mount_display_mount_radius+motherboard_mount_thickness])
 	rotate([-90,0,0])
-    difference()
-    {
-	_mb_display_mount();
-	translate([0,0,clearance+motherboard_mount_display_mount_thickness-motherboard_mount_screw_head_depth])
-	    screw(motherboard_mount_screw_size,
-		  motherboard_mount_display_mount_thickness,
-		  motherboard_mount_screw_head_size,
-		  motherboard_mount_screw_head_depth);
-    }
+	mount_bracket();
 }
 
 module mb_display_mounts()
@@ -72,6 +61,7 @@ module motherboard_mount()
 	{
 	    mb_base();
 	    mb_display_mounts();
+	    mb_tie_mount();
 	}
 	mb_mitx_screwmounts();
     }

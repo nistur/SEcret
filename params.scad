@@ -66,7 +66,25 @@ motherboard_mount_screw_insert_depth=4;
 tie_bracket_height=170;
 tie_bracket_thickness=4;
 
+
+side_bracket_width = motherboard_mount_width;
+side_bracket_height = motherboard_mount_height;
+side_bracket_height_offset = motherboard_mount_height_offset;
+side_bracket_thickness = motherboard_mount_thickness;
+side_bracket_radius = motherboard_mount_radius;
+side_bracket_display_mount_radius = motherboard_mount_display_mount_radius;
+side_bracket_display_mount_thickness = motherboard_mount_display_mount_thickness;
+side_bracket_display_mount_offset = motherboard_mount_display_mount_offset;
+side_bracket_vertical_offset = motherboard_mount_vertical_offset;
+side_bracket_screw_size = motherboard_mount_screw_size;
+side_bracket_screw_head_size = motherboard_mount_screw_head_size;
+side_bracket_screw_head_depth = motherboard_mount_screw_head_depth;
+side_bracket_hex_grid_radius = motherboard_mount_hex_grid_radius;
+side_bracket_hex_size = motherboard_mount_hex_size;
+side_bracket_hex_spacing = motherboard_mount_hex_spacing;
+
 clearance=0.2;
 
 $fn = $preview ? 60 : 360;
 
+project=0;
