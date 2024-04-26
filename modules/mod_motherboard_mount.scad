@@ -5,7 +5,7 @@ module mb_base()
 {
     difference()
     {
-	rounded_box(motherboard_mount_width, motherboard_mount_height+motherboard_mount_height_offset, motherboard_mount_thickness, motherboard_mount_radius);
+	translate([motherboard_mount_width_offset/2,0,0]) rounded_box(motherboard_mount_width+motherboard_mount_width_offset, motherboard_mount_height+motherboard_mount_height_offset, motherboard_mount_thickness, motherboard_mount_radius);
 	nhex = 2*motherboard_mount_hex_grid_radius / motherboard_mount_hex_size;
 	intersection()
 	{
@@ -41,7 +41,7 @@ module mb_mitx_screwmounts()
 {
     // I have mixed up X and Y here - this is because I created the mount in one orientation, then looked at the mobo
     // and decided it made sense to me in another orientation. I may change this later
-    x0=(motherboard_mount_width/2)-motherboard_mount_mitx_screw_yoffs;
+    x0=(motherboard_mount_width/2)-motherboard_mount_mitx_screw_yoffs+motherboard_mount_width_offset;
     y0=((motherboard_mount_height+motherboard_mount_height_offset)/2)-motherboard_mount_mitx_screw_xoffs;
     y1=y0-motherboard_mount_mitx_screw_spacing_width;
     x1=x0-motherboard_mount_mitx_screw_spacing_height;

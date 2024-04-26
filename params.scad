@@ -40,6 +40,7 @@ lcd_bracket_screw_radius=0.8;
 motherboard_mount_width=170;
 motherboard_mount_height=170;
 motherboard_mount_height_offset=10;
+motherboard_mount_width_offset=5;
 motherboard_mount_thickness=4;
 motherboard_mount_radius=11;
 motherboard_mount_display_mount_radius=8;
