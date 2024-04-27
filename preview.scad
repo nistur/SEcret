@@ -3,6 +3,7 @@ include<modules/mod_motherboard_mount.scad>
 include<modules/mod_tie_bracket.scad>
 include<modules/mod_side_bracket.scad>
 
+include<ref/ref_atx_psu.scad>
 include<ref/ref_mini_itx.scad>
 col_1=[0.5,0.5,1];
 col_2=[1,0.5,0.5];
@@ -39,4 +40,10 @@ if($preview)
 	       -motherboard_mount_width_offset-motherboard_mount_vertical_offset-motherboard_mount_width/2,
 	       display_mount_thickness + motherboard_mount_height + motherboard_mount_height_offset])  rotate([0, 90, 0])
 	mini_itx();
+
+    // Just randomly position this for now
+    translate([0,-20-display_mount_height/2,motherboard_mount_height-100])
+	rotate([0,-90,180]) sfx_psu(); // using SFX PSU for now because ATX is massive
+    translate([-100,-20-display_mount_height/2,motherboard_mount_height-150])
+	rotate([0,-90,180]) atx_psu();
 }
